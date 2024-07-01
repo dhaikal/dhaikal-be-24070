@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use App\Models\Rating;
 
 class MovieController extends Controller
 {
@@ -57,5 +58,18 @@ class MovieController extends Controller
         $movies = Movie::where('Performer', $performer_name)->get();
 
         return response()->json($movies);
+    }
+
+    public function give_rating(Request $request)
+    {
+        $request->validate([
+            'Movie_title' => 'required',
+            'Username' => 'required',
+            'Rating' => 'required|integer',
+            'R_description' => 'required',
+        ]);
+
+        $rating = Rating::create($request->all());
+        return response()->json($rating, 201);
     }
 }
