@@ -25,3 +25,4 @@ Route::get('/timeslot', [MovieController::class, 'timeslot']);
 Route::get('/specific_movie_theater', [MovieController::class, 'specific_movie_theater']);
 Route::get('/search_performer', [MovieController::class, 'search_performer']);
 Route::post('/give_rating', [MovieController::class, 'give_rating']);
+Route::get('/new_movies', [MovieController::class, 'new_movies']);

@@ -72,4 +72,15 @@ class MovieController extends Controller
         $rating = Rating::create($request->all());
         return response()->json($rating, 201);
     }
+
+    public function new_movies(Request $request)
+    {
+        $r_date = $request->query('r_date');
+
+        $date = date('Y-m-d', strtotime($r_date));
+
+        $movies = Movie::where('start_time', '>=', $date)->get();
+
+        return response()->json($movies);
+    }
 }
